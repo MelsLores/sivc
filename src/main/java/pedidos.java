@@ -6,6 +6,8 @@
 /**
  *
  * @author melan
+ * 
+ * PRUEBA PPEDIDOS
  */
 public class pedidos extends javax.swing.JFrame {
 
