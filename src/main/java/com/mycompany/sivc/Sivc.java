@@ -12,7 +12,8 @@ package com.mycompany.sivc;
 public class Sivc {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Login abrir = new Login();
+        abrir.setVisible(true);
         
     }
 }
