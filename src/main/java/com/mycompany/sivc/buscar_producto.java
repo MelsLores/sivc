@@ -16,6 +16,7 @@ public class buscar_producto extends javax.swing.JFrame {
      */
     public buscar_producto() {
         initComponents();
+         this.setLocationRelativeTo(null);
     }
 
     /**

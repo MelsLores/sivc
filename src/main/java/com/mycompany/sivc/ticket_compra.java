@@ -16,6 +16,7 @@ public class ticket_compra extends javax.swing.JFrame {
      */
     public ticket_compra() {
         initComponents();
+         this.setLocationRelativeTo(null);
     }
 
     /**

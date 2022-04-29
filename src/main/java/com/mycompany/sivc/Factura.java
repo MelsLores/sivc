@@ -16,6 +16,7 @@ public class Factura extends javax.swing.JFrame {
      */
     public Factura() {
         initComponents();
+         this.setLocationRelativeTo(null);
     }
 
     /**
@@ -265,9 +266,9 @@ public class Factura extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addGap(60, 60, 60)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))

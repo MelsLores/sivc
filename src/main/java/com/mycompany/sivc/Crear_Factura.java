@@ -16,6 +16,7 @@ public class Crear_Factura extends javax.swing.JFrame {
      */
     public Crear_Factura() {
         initComponents();
+         this.setLocationRelativeTo(null);
     }
 
     /**

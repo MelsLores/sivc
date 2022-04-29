@@ -18,6 +18,7 @@ public class pedidos extends javax.swing.JFrame {
      */
     public pedidos() {
         initComponents();
+         this.setLocationRelativeTo(null);
     }
 
     /**

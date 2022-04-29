@@ -16,6 +16,7 @@ public class ventasGenerales extends javax.swing.JFrame {
      */
     public ventasGenerales() {
         initComponents();
+         this.setLocationRelativeTo(null);
     }
 
     /**
