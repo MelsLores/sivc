@@ -81,6 +81,11 @@ public class ticket_compra extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1.setText("imprimir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setText("Facturar");
@@ -220,6 +225,13 @@ public class ticket_compra extends javax.swing.JFrame {
         abrir.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+          // TODO add your handling code here:
+          MenuGeneral abrir = new MenuGeneral();
+           abrir.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
