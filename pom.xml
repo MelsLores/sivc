@@ -17,22 +17,4 @@
         <maven.compiler.target>15</maven.compiler.target>
         <exec.mainClass>com.mycompany.sivc.Sivc</exec.mainClass>
     </properties>
-<<<<<<< Updated upstream
-    
-    
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
-<dependency>
-    <groupId>com.microsoft.sqlserver</groupId>
-    <artifactId>mssql-jdbc</artifactId>
-    <version>11.1.1.jre18-preview</version>
-</dependency>
-        <dependency>
-            <groupId>org.netbeans.external</groupId>
-            <artifactId>AbsoluteLayout</artifactId>
-            <version>RELEASE130</version>
-        </dependency>
-    </dependencies>
-=======
->>>>>>> Stashed changes
 </project>
