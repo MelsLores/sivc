@@ -111,7 +111,13 @@ public class Factura extends javax.swing.JFrame {
 
         jTextField13.setText("DD/MM/AA");
 
+        jTextField14.setEditable(false);
         jTextField14.setText("jTextField12");
+        jTextField14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField14ActionPerformed(evt);
+            }
+        });
 
         jTextField15.setText("RFC ");
 
@@ -333,6 +339,7 @@ public class Factura extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+     
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
@@ -346,6 +353,10 @@ public class Factura extends javax.swing.JFrame {
         abrir.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField14ActionPerformed
 
     /**
      * @param args the command line arguments
