@@ -384,6 +384,7 @@ public class buscar_producto extends javax.swing.JFrame {
         Venta abrir = new Venta();
         abrir.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
