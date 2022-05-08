@@ -157,14 +157,17 @@ public class producto_nuevo extends javax.swing.JFrame {
    
        try{
      
-          PreparedStatement  guardar=c.prepareStatement("INSERT INTO producto(nombre,id_categoria,precio,cantidad) VALUES(?,?,?,?)");
+          PreparedStatement  guardar=c.prepareStatement("INSERT INTO productos(nombre,id_categoria,precio,cantidad) VALUES(?,?,?,?)");
           guardar.setString(1,nom_prod.getText());
            guardar.setString(2,id_categoria.getText());
            guardar.setString(3,precio.getText());
            guardar.setString(4,cantidad.getText());
            guardar.executeUpdate();
           JOptionPane.showMessageDialog(null,"producto agregado");
-           
+          nom_prod.setText("");
+          id_categoria.setText("");
+          precio.setText("");
+          cantidad.setText("");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "no se logro guardar Error "+e.getMessage());
         }
