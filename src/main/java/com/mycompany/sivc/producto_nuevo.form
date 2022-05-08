@@ -158,17 +158,17 @@
     </Component>
     <Component class="javax.swing.JTextField" name="nom_prod">
       <Properties>
-        <Property name="text" type="java.lang.String" value="                 "/>
+        <Property name="text" type="java.lang.String" value="name"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="id_categoria">
       <Properties>
-        <Property name="text" type="java.lang.String" value="                 "/>
+        <Property name="text" type="java.lang.String" value="cat"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="precio">
       <Properties>
-        <Property name="text" type="java.lang.String" value="                 "/>
+        <Property name="text" type="java.lang.String" value="precio"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
@@ -180,6 +180,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cantidad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="cantidad"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

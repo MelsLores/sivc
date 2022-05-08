@@ -71,14 +71,16 @@ public class producto_nuevo extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setText("precio");
 
-        nom_prod.setText("                 ");
+        nom_prod.setText("name");
 
-        id_categoria.setText("                 ");
+        id_categoria.setText("cat");
 
-        precio.setText("                 ");
+        precio.setText("precio");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("cantidad");
+
+        cantidad.setText("cantidad");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,10 +154,10 @@ public class producto_nuevo extends javax.swing.JFrame {
     public void agregarproducto(){
         conexion con = new conexion();
         Connection c =con.conectar();
-    /*
+   
        try{
      
-           PreparedStatament guardar=c.prepareStatement("INSERT INTO producto(id_producto,nombre,id_categoria,precio,cantidad) VALUES(?,?,?,?,?)");
+          PreparedStatement  guardar=c.prepareStatement("INSERT INTO producto(nombre,id_categoria,precio,cantidad) VALUES(?,?,?,?)");
           guardar.setString(1,nom_prod.getText());
            guardar.setString(2,id_categoria.getText());
            guardar.setString(3,precio.getText());
@@ -166,7 +168,7 @@ public class producto_nuevo extends javax.swing.JFrame {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "no se logro guardar Error "+e.getMessage());
         }
-    */
+    
     
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
