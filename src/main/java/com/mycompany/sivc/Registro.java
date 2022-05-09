@@ -21,40 +21,44 @@ public class Registro extends javax.swing.JFrame {
          this.setLocationRelativeTo(null);
     }
     public void registro(){
-    
-    if(contra1==contra2 && mail1== mail2){
         
-     /*  
+    
+    if(contra1==contra2 && mail1 == mail2){
+        
+     
     conexion con = new conexion();
         Connection c =con.conectar();
    
        try{
      
           PreparedStatement  guardar=c.prepareStatement("INSERT INTO usuarios(id_usuario,usuario,nombre,apellido_pat,apellido_mat;contraseña,id_rol) VALUES(?,?,?,?,?,?,?)");
-          guardar.setString(1,idproducto.getText());
-          guardar.setString(2,nom_prod.getText());
-          guardar.setString(3,id_categoria.getText());
-         guardar.setString(4,precio.getText());
-           guardar.setString(5,cantidad.getText());
+          //guardar.setString(1,idusuario.getText());
+          guardar.setString(2,user.getText());
+          guardar.setString(3,name.getText());
+         guardar.setString(4,apellidoP.getText());
+           guardar.setString(5,apellidoM.getText());
+        guardar.setString(6,String.valueOf(contra1.getPassword()));
+        //guardar.setString(7,idrol.getText());
+        
            guardar.executeUpdate();
           JOptionPane.showMessageDialog(null,"usuario registrado");
         
-          idproducto.setText("");
-          nom_prod.setText("");
-          id_categoria.setText("");
-          precio.setText("");
-          cantidad.setText("");
-        
+          user.setText("");
+          name.setText("");
+          apellidoP.setText("");
+          apellidoM.setText("");
+          contra1.setText("");
+          contra2.setText("");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "no se logro guardar Error "+e.getMessage());
         }
-        
+         /*comentario:modifique y empece  
     */
     }else
-             if(mail1 != mail2){
-              JOptionPane.showMessageDialog(null,"no se confirmo el correo bien");
+             if(mail1 != mail2){ //podrian checar si hubo un 
+                 JOptionPane.showMessageDialog(null,"no se confirmo el correo bien");
              }else{
-             JOptionPane.showMessageDialog(null,"no se confirmo la contraseña bien");
+                 JOptionPane.showMessageDialog(null,"no se confirmo la contraseña bien");
              }
              
    
@@ -82,7 +86,7 @@ public class Registro extends javax.swing.JFrame {
         mail2 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        user = new javax.swing.JTextField();
         contra1 = new javax.swing.JPasswordField();
         contra2 = new javax.swing.JPasswordField();
         jLabel15 = new javax.swing.JLabel();
@@ -148,9 +152,9 @@ public class Registro extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel14.setText("Confirmar contraseña");
 
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                userActionPerformed(evt);
             }
         });
 
@@ -203,7 +207,7 @@ public class Registro extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -267,7 +271,7 @@ public class Registro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
@@ -306,9 +310,9 @@ public class Registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mail2ActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_userActionPerformed
 
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
         // TODO add your handling code here:
@@ -378,11 +382,11 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField mail1;
     private javax.swing.JTextField mail2;
     private javax.swing.JTextField name;
     private javax.swing.JButton registro;
+    private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 }
