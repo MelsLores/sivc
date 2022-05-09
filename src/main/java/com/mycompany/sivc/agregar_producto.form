@@ -33,7 +33,7 @@
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="salida_inventario" min="-2" max="-2" attributes="0"/>
-                          <Component id="jSpinner1" min="-2" max="-2" attributes="0"/>
+                          <Component id="canti" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -65,7 +65,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="canti" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="263" max="-2" attributes="0"/>
@@ -119,8 +119,6 @@
         <Property name="text" type="java.lang.String" value="agregar productos"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSpinner" name="jSpinner1">
-    </Component>
     <Component class="javax.swing.JButton" name="salida_inventario">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;---"/>
@@ -128,6 +126,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salida_inventarioActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="canti">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="cantidad"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

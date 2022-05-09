@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import java.sql.PreparedStatement;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -23,7 +24,11 @@ public class buscar_producto extends javax.swing.JFrame {
         initComponents();
          this.setLocationRelativeTo(null);
     }
-
+ public void buscar(){
+ 
+ 
+ 
+ }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,23 +41,23 @@ public class buscar_producto extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        idproducto = new javax.swing.JTextPane();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
+        nom_prod = new javax.swing.JTextPane();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextPane3 = new javax.swing.JTextPane();
         srchboton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        minus2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        cant2 = new javax.swing.JTextField();
+        minus1 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        cant1 = new javax.swing.JTextField();
+        minus3 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
+        cant3 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
@@ -62,13 +67,13 @@ public class buscar_producto extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        precio1 = new javax.swing.JTextField();
+        precio2 = new javax.swing.JTextField();
+        precio3 = new javax.swing.JTextField();
         jScrollBar1 = new javax.swing.JScrollBar();
         jButton8 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        Tcant = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,15 +85,15 @@ public class buscar_producto extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("ID");
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(idproducto);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Nombre");
 
-        jScrollPane2.setViewportView(jTextPane2);
+        jScrollPane2.setViewportView(nom_prod);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Filtro");
+        jLabel4.setText("categoria");
 
         jScrollPane3.setViewportView(jTextPane3);
 
@@ -100,23 +105,23 @@ public class buscar_producto extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("-");
+        minus2.setText("-");
 
         jButton3.setText("+");
 
-        jTextField1.setText("num");
+        cant2.setText("num");
 
-        jButton4.setText("-");
+        minus1.setText("-");
 
         jButton5.setText("+");
 
-        jTextField2.setText("num");
+        cant1.setText("num");
 
-        jButton6.setText("-");
+        minus3.setText("-");
 
         jButton7.setText("+");
 
-        jTextField3.setText("num");
+        cant3.setText("num");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("no disponibles");
@@ -142,14 +147,14 @@ public class buscar_producto extends javax.swing.JFrame {
 
         jLabel11.setText("nombre:");
 
-        jTextField4.setEditable(false);
-        jTextField4.setText("precio");
+        precio1.setEditable(false);
+        precio1.setText("precio");
 
-        jTextField9.setEditable(false);
-        jTextField9.setText("precio");
+        precio2.setEditable(false);
+        precio2.setText("precio");
 
-        jTextField10.setEditable(false);
-        jTextField10.setText("precio");
+        precio3.setEditable(false);
+        precio3.setText("precio");
 
         jButton8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton8.setText("comprar");
@@ -162,7 +167,7 @@ public class buscar_producto extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("articulos seleccionados");
 
-        jTextField11.setText("cantidad");
+        Tcant.setText("cantidad");
 
         jButton9.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jButton9.setText("<");
@@ -198,23 +203,23 @@ public class buscar_producto extends javax.swing.JFrame {
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                         .addGap(512, 512, 512)
-                                                        .addComponent(jButton6)
+                                                        .addComponent(minus3)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(cant3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addComponent(jButton7))
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addComponent(jLabel9)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(precio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(127, 127, 127)
                                                         .addComponent(jLabel11)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(precio3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jButton4)
+                                                        .addComponent(minus1)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(cant1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addComponent(jButton5)
                                                         .addGap(506, 506, 506))
@@ -226,9 +231,9 @@ public class buscar_producto extends javax.swing.JFrame {
                                                                     .addGap(18, 18, 18)
                                                                     .addComponent(jLabel5))
                                                                 .addGroup(layout.createSequentialGroup()
-                                                                    .addComponent(jButton2)
+                                                                    .addComponent(minus2)
                                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(cant2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                     .addComponent(jButton3))))
                                                         .addGap(240, 240, 240))))
@@ -238,7 +243,7 @@ public class buscar_producto extends javax.swing.JFrame {
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addComponent(jLabel7)
                                                         .addGap(14, 14, 14)
-                                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(precio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(510, 510, 510))
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,7 +276,7 @@ public class buscar_producto extends javax.swing.JFrame {
                                 .addGap(79, 79, 79)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Tcant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(45, 45, 45)))
@@ -309,29 +314,29 @@ public class buscar_producto extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel7)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(precio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel9)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(precio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel11)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(precio3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton4)
+                        .addComponent(minus1)
                         .addComponent(jButton5)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cant1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton6)
+                        .addComponent(minus3)
                         .addComponent(jButton7)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2)
+                        .addComponent(cant3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(minus2)
                         .addComponent(jButton3)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cant2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -340,7 +345,7 @@ public class buscar_producto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Tcant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53))
         );
 
@@ -348,8 +353,8 @@ public class buscar_producto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
   
     public void Buscarproductos(){
-       // conexion con = new conexion();
-       // Connection c =con.conectar();
+       //conexion con = new conexion();
+       //Connection c =con.conectar();
         
        // int res=0;
        // String id_Prod=id_porducto.getInt();
@@ -381,6 +386,7 @@ public class buscar_producto extends javax.swing.JFrame {
     }
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        
         Venta abrir = new Venta();
         abrir.setVisible(true);
         this.setVisible(false);
@@ -434,11 +440,13 @@ public class buscar_producto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField Tcant;
+    private javax.swing.JTextField cant1;
+    private javax.swing.JTextField cant2;
+    private javax.swing.JTextField cant3;
+    private javax.swing.JTextPane idproducto;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
@@ -456,20 +464,18 @@ public class buscar_producto extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextPane jTextPane3;
+    private javax.swing.JButton minus1;
+    private javax.swing.JButton minus2;
+    private javax.swing.JButton minus3;
+    private javax.swing.JTextPane nom_prod;
+    private javax.swing.JTextField precio1;
+    private javax.swing.JTextField precio2;
+    private javax.swing.JTextField precio3;
     private javax.swing.JButton srchboton;
     // End of variables declaration//GEN-END:variables
 }

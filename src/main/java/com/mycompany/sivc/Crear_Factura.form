@@ -29,7 +29,7 @@
                       <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jTextField4" min="-2" max="-2" attributes="0"/>
+                      <Component id="postfact" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -40,11 +40,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="EmailFact" min="-2" pref="291" max="-2" attributes="0"/>
+                              <Component id="emailfac" min="-2" pref="291" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="NombreFact" min="-2" pref="398" max="-2" attributes="0"/>
+                              <Component id="nombrefact" min="-2" pref="398" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -55,12 +55,12 @@
                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="EmpFact" min="-2" max="-2" attributes="0"/>
+                              <Component id="empfact" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="DirFact" min="-2" pref="401" max="-2" attributes="0"/>
+                              <Component id="dirfact" min="-2" pref="401" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -79,8 +79,8 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField6" min="-2" pref="151" max="-2" attributes="0"/>
+                          <Component id="razonf" min="-2" max="-2" attributes="0"/>
+                          <Component id="rfc" min="-2" pref="151" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -115,27 +115,27 @@
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                              <Component id="NombreFact" min="-2" max="-2" attributes="0"/>
+                              <Component id="nombrefact" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="EmpFact" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="empfact" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="EmailFact" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="emailfac" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="DirFact" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="dirfact" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="postfact" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -147,12 +147,12 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="razonf" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField6" min="-2" max="-2" attributes="0"/>
+                  <Component id="rfc" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="Factcrear" min="-2" max="-2" attributes="0"/>
@@ -237,7 +237,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FactcrearActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="DirFact">
+    <Component class="javax.swing.JTextField" name="dirfact">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
@@ -245,7 +245,7 @@
         <Property name="text" type="java.lang.String" value="calle,numero,colonia,ciudad,estado"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="EmailFact">
+    <Component class="javax.swing.JTextField" name="emailfac">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
@@ -253,7 +253,7 @@
         <Property name="text" type="java.lang.String" value="correo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
+    <Component class="javax.swing.JTextField" name="postfact">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
@@ -261,7 +261,7 @@
         <Property name="text" type="java.lang.String" value="codigo postal"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="NombreFact">
+    <Component class="javax.swing.JTextField" name="nombrefact">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
@@ -269,7 +269,7 @@
         <Property name="text" type="java.lang.String" value="nombre/s,apellido paterno y materno"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField6">
+    <Component class="javax.swing.JTextField" name="rfc">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
@@ -277,17 +277,16 @@
         <Property name="text" type="java.lang.String" value="RFC"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="razonf">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="3">
+            <StringItem index="0" value="compra personal"/>
+            <StringItem index="1" value="compra laboral"/>
+            <StringItem index="2" value="compra empresarial"/>
           </StringArray>
         </Property>
       </Properties>
@@ -300,7 +299,7 @@
         <Property name="text" type="java.lang.String" value="imagen"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="EmpFact">
+    <Component class="javax.swing.JTextField" name="empfact">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>

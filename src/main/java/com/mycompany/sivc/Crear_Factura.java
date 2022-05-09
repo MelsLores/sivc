@@ -9,6 +9,12 @@ package com.mycompany.sivc;
  *
  * @author BAML
  */
+    
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
 public class Crear_Factura extends javax.swing.JFrame {
 
     /**
@@ -18,7 +24,22 @@ public class Crear_Factura extends javax.swing.JFrame {
         initComponents();
          this.setLocationRelativeTo(null);
     }
-
+public void agregarfactura(){
+        conexion con = new conexion();
+        Connection c =con.conectar();
+   
+       try{
+     
+        //  PreparedStatement  guardar=c.prepareStatement("INSERT INTO productos(id_producto,nombre,id_categoria,precio,cantidad) VALUES(?,?,?,?,?)");
+          
+          JOptionPane.showMessageDialog(null,"producto agregado");
+         
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "no se logro guardar Error "+e.getMessage());
+        }
+    
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,14 +58,14 @@ public class Crear_Factura extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         Factcrear = new javax.swing.JButton();
-        DirFact = new javax.swing.JTextField();
-        EmailFact = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        NombreFact = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        dirfact = new javax.swing.JTextField();
+        emailfac = new javax.swing.JTextField();
+        postfact = new javax.swing.JTextField();
+        nombrefact = new javax.swing.JTextField();
+        rfc = new javax.swing.JTextField();
+        razonf = new javax.swing.JComboBox<>();
         jTextField3 = new javax.swing.JTextField();
-        EmpFact = new javax.swing.JTextField();
+        empfact = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,28 +102,28 @@ public class Crear_Factura extends javax.swing.JFrame {
             }
         });
 
-        DirFact.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        DirFact.setText("calle,numero,colonia,ciudad,estado");
+        dirfact.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        dirfact.setText("calle,numero,colonia,ciudad,estado");
 
-        EmailFact.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        EmailFact.setText("correo");
+        emailfac.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        emailfac.setText("correo");
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField4.setText("codigo postal");
+        postfact.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        postfact.setText("codigo postal");
 
-        NombreFact.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        NombreFact.setText("nombre/s,apellido paterno y materno");
+        nombrefact.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nombrefact.setText("nombre/s,apellido paterno y materno");
 
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField6.setText("RFC");
+        rfc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        rfc.setText("RFC");
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        razonf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        razonf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "compra personal", "compra laboral", "compra empresarial" }));
 
         jTextField3.setText("imagen");
 
-        EmpFact.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        EmpFact.setText("nombre de la empresa");
+        empfact.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        empfact.setText("nombre de la empresa");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("empresa:");
@@ -117,7 +138,7 @@ public class Crear_Factura extends javax.swing.JFrame {
                         .addGap(105, 105, 105)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(postfact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -126,10 +147,10 @@ public class Crear_Factura extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(EmailFact, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(emailfac, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(NombreFact, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(nombrefact, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,11 +158,11 @@ public class Crear_Factura extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel9)
                                 .addGap(18, 18, 18)
-                                .addComponent(EmpFact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(empfact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(DirFact, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(dirfact, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
@@ -154,8 +175,8 @@ public class Crear_Factura extends javax.swing.JFrame {
                             .addComponent(jLabel8))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(razonf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rfc, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(312, 312, 312)
                         .addComponent(jLabel1))
@@ -182,22 +203,22 @@ public class Crear_Factura extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
-                                .addComponent(NombreFact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(nombrefact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(EmpFact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(empfact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(EmailFact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(emailfac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(DirFact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dirfact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(postfact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(104, 104, 104)
@@ -205,11 +226,11 @@ public class Crear_Factura extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(razonf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rfc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Factcrear)
                 .addGap(41, 41, 41))
@@ -219,7 +240,7 @@ public class Crear_Factura extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void FactcrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FactcrearActionPerformed
-       
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_FactcrearActionPerformed
 
@@ -259,12 +280,10 @@ public class Crear_Factura extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField DirFact;
-    private javax.swing.JTextField EmailFact;
-    private javax.swing.JTextField EmpFact;
     private javax.swing.JButton Factcrear;
-    private javax.swing.JTextField NombreFact;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField dirfact;
+    private javax.swing.JTextField emailfac;
+    private javax.swing.JTextField empfact;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -275,7 +294,9 @@ public class Crear_Factura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField nombrefact;
+    private javax.swing.JTextField postfact;
+    private javax.swing.JComboBox<String> razonf;
+    private javax.swing.JTextField rfc;
     // End of variables declaration//GEN-END:variables
 }
