@@ -23,7 +23,7 @@ public class Registro extends javax.swing.JFrame {
     public void registro(){
         
     
-    if(contra1==contra2 && mail1 == mail2){
+    if(contra1==contra2 ){
         
      
     conexion con = new conexion();
@@ -38,28 +38,28 @@ public class Registro extends javax.swing.JFrame {
          guardar.setString(4,apellidoP.getText());
            guardar.setString(5,apellidoM.getText());
         guardar.setString(6,String.valueOf(contra1.getPassword()));
-        //guardar.setString(7,idrol.getText());
+        guardar.setString(7,idrol.getSelectedItem().toString());
         
            guardar.executeUpdate();
           JOptionPane.showMessageDialog(null,"usuario registrado");
-        
           user.setText("");
           name.setText("");
           apellidoP.setText("");
           apellidoM.setText("");
           contra1.setText("");
           contra2.setText("");
+          
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "no se logro guardar Error "+e.getMessage());
         }
          /*comentario:modifique y empece  
     */
     }else
-             if(mail1 != mail2){ //podrian checar si hubo un 
-                 JOptionPane.showMessageDialog(null,"no se confirmo el correo bien");
-             }else{
-                 JOptionPane.showMessageDialog(null,"no se confirmo la contraseña bien");
-             }
+              //podrian checar si hubo un 
+                 JOptionPane.showMessageDialog(null,"no se confirmo la contraseña  bien");
+             
+                 
+             
              
    
     }
@@ -92,6 +92,8 @@ public class Registro extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         registro = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        idrol = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -179,6 +181,11 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("rol  ");
+
+        idrol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -218,10 +225,19 @@ public class Registro extends javax.swing.JFrame {
                                 .addComponent(contra2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel1)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                        .addGap(107, 107, 107)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                                .addGap(107, 107, 107))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(idrol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
@@ -248,7 +264,11 @@ public class Registro extends javax.swing.JFrame {
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(idrol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -318,7 +338,7 @@ public class Registro extends javax.swing.JFrame {
         // TODO add your handling code here:
        registro();
        
-       MenuGeneral abrir = new MenuGeneral();
+       Login abrir = new Login();
                 abrir.setVisible(true);
                 this.setVisible(false);
         
@@ -372,7 +392,9 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JTextField apellidoP;
     private javax.swing.JPasswordField contra1;
     private javax.swing.JPasswordField contra2;
+    private javax.swing.JComboBox<String> idrol;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
