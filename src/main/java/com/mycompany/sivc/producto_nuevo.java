@@ -174,24 +174,24 @@ public class producto_nuevo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void agregarproducto(){
-        idproducto.setText("");
-          nom_prod.setText("");
-          precio.setText("");
-          cantidad.setText("");
+        
         conexion con = new conexion();
         Connection c =con.conectar();
    
        try{
          
           PreparedStatement  guardar=c.prepareStatement("INSERT INTO productos(id_producto,nombre,id_categoria,precio,cantidad) VALUES(?,?,?,?,?)");
-          //guardar.setString(1,idproducto.getText());
+          guardar.setString(1,idproducto.getText());
           guardar.setString(2,nom_prod.getText());
            guardar.setString(3,id_categoria.getSelectedItem().toString());
            guardar.setString(4,precio.getText());
            guardar.setString(5,cantidad.getText());
            guardar.executeUpdate();
           JOptionPane.showMessageDialog(null,"producto agregado");
-          
+          idproducto.setText("");
+          nom_prod.setText("");
+          precio.setText("");
+          cantidad.setText("");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "no se logro guardar Error "+e.getMessage());
         }

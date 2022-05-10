@@ -23,21 +23,26 @@ public class Registro extends javax.swing.JFrame {
     public void registro(){
         
     
-    if(contra1==contra2 ){
+    String pass1 = new String(contra1.getPassword());
+    String pass2 = new String(contra2.getPassword());
+      
+      
+    if(pass1.equals(pass2) ){ // por alguna razon no puede confirmar la contraseña bien
         
      
     conexion con = new conexion();
         Connection c =con.conectar();
-   
+        
+        
        try{
      
-          PreparedStatement  guardar=c.prepareStatement("INSERT INTO usuarios(id_usuario,usuario,nombre,apellido_pat,apellido_mat;contraseña,id_rol) VALUES(?,?,?,?,?,?,?)");
-          //guardar.setString(1,idusuario.getText());
+          PreparedStatement  guardar=c.prepareStatement("INSERT INTO usuarios(id_usuario,usuario,nombre,apellido_pat,apellido_mat,contraseña,id_rol) VALUES(?,?,?,?,?,?,?)");
+          guardar.setString(1,idusuario.getText());
           guardar.setString(2,user.getText());
           guardar.setString(3,name.getText());
          guardar.setString(4,apellidoP.getText());
            guardar.setString(5,apellidoM.getText());
-        guardar.setString(6,String.valueOf(contra1.getPassword()));
+        guardar.setString(6,String.valueOf(contra2.getPassword()));
         guardar.setString(7,idrol.getSelectedItem().toString());
         
            guardar.executeUpdate();
@@ -94,6 +99,7 @@ public class Registro extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         idrol = new javax.swing.JComboBox<>();
+        idusuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,6 +192,17 @@ public class Registro extends javax.swing.JFrame {
 
         idrol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
 
+        idusuario.setText("2");
+        idusuario.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                idusuarioAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -237,6 +254,8 @@ public class Registro extends javax.swing.JFrame {
                                 .addGap(107, 107, 107))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(idrol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
+                                .addComponent(idusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -267,7 +286,8 @@ public class Registro extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(idrol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(idrol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
@@ -352,6 +372,11 @@ public class Registro extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void idusuarioAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_idusuarioAncestorAdded
+     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idusuarioAncestorAdded
+
     /**
      * @param args the command line arguments
      */
@@ -393,6 +418,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JPasswordField contra1;
     private javax.swing.JPasswordField contra2;
     private javax.swing.JComboBox<String> idrol;
+    private javax.swing.JTextField idusuario;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
