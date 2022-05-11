@@ -43,14 +43,13 @@ public class Registro extends javax.swing.JFrame {
         
        try{
      
-          PreparedStatement  guardar=c.prepareStatement("INSERT INTO usuarios(id_usuario,usuario,nombre,apellido_pat,apellido_mat,contraseña,id_rol) VALUES(?,?,?,?,?,?,?)");
-          guardar.setString(1,idusuario.getText());
-          guardar.setString(2,user.getText());
-          guardar.setString(3,name.getText());
-         guardar.setString(4,apellidoP.getText());
-           guardar.setString(5,apellidoM.getText());
-        guardar.setString(6,String.valueOf(contra2.getPassword()));
-        guardar.setString(7,idrol.getSelectedItem().toString());
+          PreparedStatement  guardar=c.prepareStatement("INSERT INTO usuarios(usuario,nombre,apellido_pat,apellido_mat,contraseña,id_rol) VALUES(?,?,?,?,?,?)");
+          guardar.setString(1,user.getText());
+          guardar.setString(2,name.getText());
+         guardar.setString(3,apellidoP.getText());
+           guardar.setString(4,apellidoM.getText());
+        guardar.setString(5,String.valueOf(contra2.getPassword()));
+        guardar.setString(6,idrol.getSelectedItem().toString());
         
            guardar.executeUpdate();
           JOptionPane.showMessageDialog(null,"usuario registrado");

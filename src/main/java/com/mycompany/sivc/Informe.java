@@ -41,7 +41,7 @@ public class Informe extends javax.swing.JFrame {
          
          try{
           Statement read =c.createStatement();
-          ResultSet rs=read.executeQuery("select  from * pedidos  ");
+          ResultSet rs=read.executeQuery("select id_pedido,fecha,costo,descripcion FROM pedidos ORDER BY fecha DESC");
           
           while(rs.next()){
           data2 [0] = rs.getString(1);
@@ -60,17 +60,17 @@ public class Informe extends javax.swing.JFrame {
  public void max_ventas(){
   
         DefaultTableModel sells= new DefaultTableModel();
-         sells.addColumn("pedidos");
-         sells.addColumn("fecha");
-         sells.addColumn("costo");
-         sells.addColumn("descripcion");
+         sells.addColumn("Número de pedido");
+         sells.addColumn("Fecha");
+         sells.addColumn("Costo");
+         sells.addColumn("Descripción");
          maxSells.setModel(sells);
          
          String[] data1 = new String[4];
          
          try{
           Statement read =c.createStatement();
-          ResultSet rs=read.executeQuery("select max from * pedidos where costo ");
+          ResultSet rs=read.executeQuery("select id_pedido,fecha,costo,descripcion FROM pedidos ORDER BY costo DESC");
           
           while(rs.next()){
           data1 [0] = rs.getString(1);
