@@ -1,5 +1,13 @@
 package com.mycompany.sivc;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -19,6 +27,41 @@ public class proveedores extends javax.swing.JFrame {
          this.setLocationRelativeTo(null);
     }
 
+    void mostrarDatos(){
+        DefaultTableModel modelo=new DefaultTableModel();
+        modelo.addColumn("Usuario");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido Paterno");
+        modelo.addColumn("Apellido Materno");
+        modelo.addColumn("Contraseña");
+        modelo.addColumn("Rol");
+        jTable1.setModel(modelo);
+        
+        conexion con = new conexion();
+        Connection c =con.conectar();
+        
+        String datos[] = new String [6];
+        
+            try{
+                Statement st=c.createStatement();
+                ResultSet rs=st.executeQuery("SELECT nombre, FROM usuarios INNER JOIN rol ON usuarios.id_rol=rol.id_rol");
+                
+                while(rs.next()){
+                    datos[0]=rs.getString(1);
+                    datos[1]=rs.getString(2);
+                    datos[2]=rs.getString(3);
+                    datos[3]=rs.getString(4);
+                    datos[4]=rs.getString(5);
+                    datos[5]=rs.getString(6);
+                    modelo.addRow(datos);
+                }
+                jTable1.setModel(modelo);
+            }catch(SQLException ex){
+                Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE,null,ex);
+            }
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
