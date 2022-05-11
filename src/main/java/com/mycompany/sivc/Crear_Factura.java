@@ -24,6 +24,19 @@ public class Crear_Factura extends javax.swing.JFrame {
         initComponents();
          this.setLocationRelativeTo(null);
     }
+    
+  public void factura(){
+    Factura.rfc2.setText(rfc.getText());
+    Factura.nomcli.setText(nombrefact.getText());
+    Factura.mailcli.setText(mailfact.getText());
+    Factura.facdir2.setText(dirfact.getText());
+    Factura.empcli.setText(empfact.getText());
+    Factura.factcity2.setText(postfact.getText());
+    Factura.Razonfisc.setText(razonf.getSelectedItem().toString());
+    
+  
+  
+  }  
 public void agregarfactura(){
         conexion con = new conexion();
         Connection c =con.conectar();
@@ -59,7 +72,7 @@ public void agregarfactura(){
         jLabel8 = new javax.swing.JLabel();
         Factcrear = new javax.swing.JButton();
         dirfact = new javax.swing.JTextField();
-        emailfac = new javax.swing.JTextField();
+        mailfact = new javax.swing.JTextField();
         postfact = new javax.swing.JTextField();
         nombrefact = new javax.swing.JTextField();
         rfc = new javax.swing.JTextField();
@@ -105,8 +118,8 @@ public void agregarfactura(){
         dirfact.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         dirfact.setText("calle,numero,colonia,ciudad,estado");
 
-        emailfac.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        emailfac.setText("correo");
+        mailfact.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        mailfact.setText("correo");
 
         postfact.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         postfact.setText("codigo postal");
@@ -147,7 +160,7 @@ public void agregarfactura(){
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(emailfac, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(mailfact, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(nombrefact, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -211,7 +224,7 @@ public void agregarfactura(){
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(emailfac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(mailfact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -240,7 +253,8 @@ public void agregarfactura(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void FactcrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FactcrearActionPerformed
-        
+     factura();
+     
         // TODO add your handling code here:
     }//GEN-LAST:event_FactcrearActionPerformed
 
@@ -282,7 +296,6 @@ public void agregarfactura(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Factcrear;
     private javax.swing.JTextField dirfact;
-    private javax.swing.JTextField emailfac;
     private javax.swing.JTextField empfact;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -294,6 +307,7 @@ public void agregarfactura(){
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField mailfact;
     private javax.swing.JTextField nombrefact;
     private javax.swing.JTextField postfact;
     private javax.swing.JComboBox<String> razonf;

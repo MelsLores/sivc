@@ -29,17 +29,17 @@
                   <Component id="mailcli" min="-2" pref="121" max="-2" attributes="0"/>
                   <Component id="telcli" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
                   <Component id="facdir2" alignment="0" min="-2" pref="302" max="-2" attributes="0"/>
-                  <Component id="nomemp" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="empcli" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="factcity2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="numcli" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
+                  <Component id="nomcli" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="RFC2" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
-                  <Component id="clifisc" alignment="1" min="-2" pref="136" max="-2" attributes="0"/>
+                  <Component id="rfc2" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                  <Component id="Razonfisc" alignment="1" min="-2" pref="136" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
           </Group>
@@ -147,9 +147,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Component id="numcli" min="-2" max="-2" attributes="0"/>
+                      <Component id="nomcli" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nomemp" min="-2" max="-2" attributes="0"/>
+                      <Component id="empcli" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="facdir2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -159,10 +159,10 @@
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="mailcli" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="clifisc" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Razonfisc" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="RFC2" min="-2" max="-2" attributes="0"/>
+                  <Component id="rfc2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="88" max="-2" attributes="0"/>
@@ -237,7 +237,7 @@
         <Property name="text" type="java.lang.String" value="RFC"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="numcli">
+    <Component class="javax.swing.JTextField" name="nomcli">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nombre"/>
       </Properties>
@@ -245,7 +245,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="nomemp">
+    <Component class="javax.swing.JTextField" name="empcli">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nombre de la empresa"/>
       </Properties>
@@ -255,7 +255,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="facdir2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="direccion"/>
+        <Property name="text" type="java.lang.String" value="direccion,ciudad y estado"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -271,7 +271,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="factcity2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="C.P ,ciudad y estado"/>
+        <Property name="text" type="java.lang.String" value="C.P"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="factcity2ActionPerformed"/>
@@ -318,6 +318,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="datefactActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="idclient">
       <Events>
@@ -327,7 +330,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="RFC2">
+    <Component class="javax.swing.JTextField" name="rfc2">
       <Properties>
         <Property name="text" type="java.lang.String" value="RFC "/>
       </Properties>
@@ -335,7 +338,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="clifisc">
+    <Component class="javax.swing.JTextField" name="Razonfisc">
       <Properties>
         <Property name="text" type="java.lang.String" value="Razon Fiscal"/>
       </Properties>

@@ -40,7 +40,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="emailfac" min="-2" pref="291" max="-2" attributes="0"/>
+                              <Component id="mailfact" min="-2" pref="291" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -126,7 +126,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="emailfac" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mailfact" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -245,7 +245,7 @@
         <Property name="text" type="java.lang.String" value="calle,numero,colonia,ciudad,estado"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="emailfac">
+    <Component class="javax.swing.JTextField" name="mailfact">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
