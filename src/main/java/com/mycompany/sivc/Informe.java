@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author fergr
@@ -20,19 +21,68 @@ public class Informe extends javax.swing.JFrame {
      */
     public Informe() {
         initComponents();
+        max_ventas();
+        ultimas_ventas();
          this.setLocationRelativeTo(null);
+         
     }
+    conexion con = new conexion();
+        Connection c =con.conectar();
  public void ultimas_ventas(){
- 
- 
+   //DefaultTableModel ultimas= new DefaultTableModel() ;
+    DefaultTableModel date= new DefaultTableModel();
+         date.addColumn("pedidos");
+         date.addColumn("fecha");
+         date.addColumn("costo");
+         date.addColumn("descripcion");
+         maxSells.setModel(date);
+         
+         String[] data2 = new String[4];
+         
+         try{
+          Statement read =c.createStatement();
+          ResultSet rs=read.executeQuery("select  from * pedidos  ");
+          
+          while(rs.next()){
+          data2 [0] = rs.getString(1);
+          data2 [1] = rs.getString(2);
+          data2 [2] = rs.getString(3);
+          data2 [3] = rs.getString(4);
+          date.addRow(data2);
+          }
+          maxdate.setModel(date);
+         }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error "+e.getMessage());
+        }
  
  
  }
  public void max_ventas(){
- 
- 
- 
- 
+  
+        DefaultTableModel sells= new DefaultTableModel();
+         sells.addColumn("pedidos");
+         sells.addColumn("fecha");
+         sells.addColumn("costo");
+         sells.addColumn("descripcion");
+         maxSells.setModel(sells);
+         
+         String[] data1 = new String[4];
+         
+         try{
+          Statement read =c.createStatement();
+          ResultSet rs=read.executeQuery("select max from * pedidos where costo ");
+          
+          while(rs.next()){
+          data1 [0] = rs.getString(1);
+          data1 [1] = rs.getString(2);
+          data1 [2] = rs.getString(3);
+          data1 [3] = rs.getString(4);
+          sells.addRow(data1);
+          }
+          maxSells.setModel(sells);
+         }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error "+e.getMessage());
+        }
  }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,9 +100,9 @@ public class Informe extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        maxSells = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        maxdate = new javax.swing.JTable();
         jLabel15 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
 
@@ -76,37 +126,35 @@ public class Informe extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField1.setText("Ultimas ventas");
 
+        jTextField2.setEditable(false);
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField2.setText("Productos mas vendidos");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        maxSells.setAutoCreateColumnsFromModel(false);
+        maxSells.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane1.setViewportView(maxSells);
+
+        maxdate.setAutoCreateColumnsFromModel(false);
+        maxdate.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(maxdate);
 
         jLabel15.setFont(new java.awt.Font("Yu Gothic Light", 1, 36)); // NOI18N
         jLabel15.setText("Informe");
@@ -132,15 +180,15 @@ public class Informe extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(75, 75, 75))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -164,10 +212,10 @@ public class Informe extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(179, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,10 +285,10 @@ public class Informe extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JTable maxSells;
+    private javax.swing.JTable maxdate;
     // End of variables declaration//GEN-END:variables
 }
