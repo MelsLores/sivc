@@ -32,7 +32,7 @@ public void agregarfactura(){
      
         //  PreparedStatement  guardar=c.prepareStatement("INSERT INTO productos(id_producto,nombre,id_categoria,precio,cantidad) VALUES(?,?,?,?,?)");
           
-          JOptionPane.showMessageDialog(null,"producto agregado");
+         // JOptionPane.showMessageDialog(null,"producto agregado");
          
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "no se logro guardar Error "+e.getMessage());

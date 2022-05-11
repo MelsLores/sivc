@@ -4,16 +4,19 @@ package com.mycompany.sivc;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import com.mysql.cj.protocol.Resultset;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 /**
  *
  * @author fergr
  */
-public class Registro extends javax.swing.JFrame {
 
+public class Registro extends javax.swing.JFrame {
+       
     /**
      * Creates new form Registro
      */
@@ -21,9 +24,11 @@ public class Registro extends javax.swing.JFrame {
         initComponents();
          this.setLocationRelativeTo(null);
     }
-    public void registro(){
-        
     
+    public void registro(){
+      
+        
+      
     String pass1 = new String(contra1.getPassword());
     String pass2 = new String(contra2.getPassword());
       
@@ -33,6 +38,7 @@ public class Registro extends javax.swing.JFrame {
      
     conexion con = new conexion();
         Connection c =con.conectar();
+    
         
         
        try{
@@ -193,7 +199,7 @@ public class Registro extends javax.swing.JFrame {
 
         idrol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
 
-        idusuario.setText("2");
+        idusuario.setText("num id");
         idusuario.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 idusuarioAncestorAdded(evt);
@@ -361,7 +367,9 @@ public class Registro extends javax.swing.JFrame {
 
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
         // TODO add your handling code here:
-       registro();
+       
+       
+        registro();
        
        Login abrir = new Login();
                 abrir.setVisible(true);

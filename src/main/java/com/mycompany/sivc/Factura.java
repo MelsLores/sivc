@@ -6,6 +6,7 @@ package com.mycompany.sivc;
  */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -22,12 +23,15 @@ public class Factura extends javax.swing.JFrame {
          this.setLocationRelativeTo(null);
     }
  public void factura_imp(){
+     conexion con = new conexion();
+        Connection c =con.conectar();
+        
        // DefaultTableModel vendedor= new DefaultTableModel();
        // DefaultTableModel cantidad= new DefaultTableModel();
         
         
  
- 
+   
  }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,9 +89,11 @@ public class Factura extends javax.swing.JFrame {
             }
         });
 
-        facdir1.setText("Direccion");
+        facdir1.setEditable(false);
+        facdir1.setText("Esq. Sabino, Av. Los Encinos 3101, Nuevo Las Puentes ÌII");
 
-        factcity1.setText("C.P ,ciudad y estado");
+        factcity1.setEditable(false);
+        factcity1.setText(", 66612 Cd Apodaca, N.L. ");
         factcity1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 factcity1ActionPerformed(evt);
@@ -122,8 +128,12 @@ public class Factura extends javax.swing.JFrame {
         numfact.setText("num.factura");
 
         datefact.setText("DD/MM/AA");
+        datefact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                datefactActionPerformed(evt);
+            }
+        });
 
-        idclient.setEditable(false);
         idclient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idclientActionPerformed(evt);
@@ -214,24 +224,15 @@ public class Factura extends javax.swing.JFrame {
             .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mailcli, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telcli, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(facdir2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mailcli, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(telcli, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(RFC1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(numcli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(facdir2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nomemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(factcity2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addComponent(factcity2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numcli, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(RFC2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clifisc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -262,14 +263,11 @@ public class Factura extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(facdir1)
-                                .addGap(180, 180, 180))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(factemp1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(factcity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(factemp1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(factcity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(facdir1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
@@ -286,7 +284,9 @@ public class Factura extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3)
+                    .addComponent(RFC1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -313,9 +313,9 @@ public class Factura extends javax.swing.JFrame {
                     .addComponent(factcity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(idclient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RFC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
@@ -382,9 +382,14 @@ public class Factura extends javax.swing.JFrame {
     }//GEN-LAST:event_factcity2ActionPerformed
 
     private void impfactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_impfactActionPerformed
-   
+      factura_imp();
         // TODO add your handling code here:
     }//GEN-LAST:event_impfactActionPerformed
+
+    private void datefactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datefactActionPerformed
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_datefactActionPerformed
 
     /**
      * @param args the command line arguments
@@ -423,15 +428,15 @@ public class Factura extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField RFC1;
-    private javax.swing.JTextField RFC2;
-    private javax.swing.JTextField clifisc;
+    public static javax.swing.JTextField RFC2;
+    public static javax.swing.JTextField clifisc;
     private javax.swing.JTextField datefact;
     private javax.swing.JTextField facdir1;
-    private javax.swing.JTextField facdir2;
+    public static javax.swing.JTextField facdir2;
     private javax.swing.JTextField factcity1;
-    private javax.swing.JTextField factcity2;
+    public static javax.swing.JTextField factcity2;
     private javax.swing.JTextField factemp1;
-    private javax.swing.JTextField idclient;
+    public static javax.swing.JTextField idclient;
     private javax.swing.JButton impfact;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -446,12 +451,12 @@ public class Factura extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextField mailcli;
-    private javax.swing.JTextField nomemp;
-    private javax.swing.JTextField numcli;
-    private javax.swing.JTextField numfact;
-    private javax.swing.JTextField subtotalfact;
-    private javax.swing.JTextField telcli;
-    private javax.swing.JTextField totalfact;
+    public static javax.swing.JTextField mailcli;
+    public static javax.swing.JTextField nomemp;
+    public static javax.swing.JTextField numcli;
+    public static javax.swing.JTextField numfact;
+    public static javax.swing.JTextField subtotalfact;
+    public static javax.swing.JTextField telcli;
+    public static javax.swing.JTextField totalfact;
     // End of variables declaration//GEN-END:variables
 }

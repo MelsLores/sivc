@@ -339,7 +339,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="idusuario">
       <Properties>
-        <Property name="text" type="java.lang.String" value="2"/>
+        <Property name="text" type="java.lang.String" value="num id"/>
       </Properties>
       <Events>
         <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="idusuarioAncestorAdded"/>
