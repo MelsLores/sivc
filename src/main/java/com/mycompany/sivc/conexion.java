@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author melan
  */
 public class conexion {
-    String bd="sql5489935",url="jdbc:mysql://sql5.freemysqlhosting.net:3306/",user="sql5489935",password="9xgEgWJdGc",driver="com.mysql.cj.jdbc.Driver";
+    String bd="sql5491603",url="jdbc:mysql://sql5.freemysqlhosting.net:3306/",user="sql5491603",password="ck4x4xA27d",driver="com.mysql.cj.jdbc.Driver";
     Connection cx;
     
     public conexion(){
