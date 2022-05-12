@@ -23,49 +23,17 @@ public class inventario extends javax.swing.JFrame {
      * Creates new form inventario
      */
     public inventario() {
-        mostrarDatos();
+        
         initComponents();
         mostrarDatos();
          this.setLocationRelativeTo(null);
     }
-<<<<<<< HEAD
+//<<<<<<< HEAD
     conexion con = new conexion();
         Connection c =con.conectar();
-  public void mostrarDatos(){
-      
-      //aqui no me permite ordenarlos es mas no me permite ni mostrarlos ;
-    /* DefaultTableModel date= new DefaultTableModel();
-         date.addColumn("ID producto");
-         date.addColumn("nombre");
-         date.addColumn("categoria");
-         date.addColumn("precio");
-         date.addColumn("cantidad");
-         inventario.setModel(date);
-         
-          String[] Datos = new String[5];
-          
-          try{
-          Statement read =c.createStatement();
-          ResultSet rs=read.executeQuery("select id_producto,nombre,id_categoria,costo,descripcion FROM pedidos ");
-          
-          while(rs.next()){
-          Datos [0] = rs.getString(1);
-          Datos [1] = rs.getString(2);
-          Datos [2] = rs.getString(3);
-          Datos [3] = rs.getString(4);
-          Datos [4] = rs.getString(5);
-          date.addRow(Datos);
-          }
-          inventario.setModel(date);
-         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error "+e.getMessage());
-        }
   
-  
-  */
-  }
     
-=======
+//=======
     
     void mostrarDatos(){
         DefaultTableModel modelo=new DefaultTableModel();
@@ -101,7 +69,7 @@ public class inventario extends javax.swing.JFrame {
             }
     }
 
->>>>>>> 4fc92c2ebbd226c85cd0627e9d49fef627b89281
+//>>>>>>> 4fc92c2ebbd226c85cd0627e9d49fef627b89281
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -112,7 +80,7 @@ public class inventario extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        inventario = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -121,34 +89,7 @@ public class inventario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-<<<<<<< HEAD
-        jTextField1.setText("Buscar");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Filtrar");
-
-        inventario.setModel(new javax.swing.table.DefaultTableModel(
-=======
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
->>>>>>> 4fc92c2ebbd226c85cd0627e9d49fef627b89281
             new Object [][] {
 
             },
@@ -156,7 +97,7 @@ public class inventario extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(inventario);
+        jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("Inventario");
@@ -202,19 +143,14 @@ public class inventario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(229, 229, 229)
-                                .addComponent(jButton5)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6)
-                        .addContainerGap())))
+                        .addComponent(jButton2)
+                        .addGap(229, 229, 229)
+                        .addComponent(jButton5)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,11 +161,10 @@ public class inventario extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(jLabel2)))
                 .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton6)
-                        .addComponent(jButton5)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6)
+                    .addComponent(jButton2))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(47, Short.MAX_VALUE))
@@ -299,21 +234,12 @@ public class inventario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD
-    private javax.swing.JTable inventario;
-    private javax.swing.JButton jButton1;
-=======
->>>>>>> 4fc92c2ebbd226c85cd0627e9d49fef627b89281
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-<<<<<<< HEAD
-    private javax.swing.JTextField jTextField1;
-=======
     private javax.swing.JTable jTable1;
->>>>>>> 4fc92c2ebbd226c85cd0627e9d49fef627b89281
     // End of variables declaration//GEN-END:variables
 }
