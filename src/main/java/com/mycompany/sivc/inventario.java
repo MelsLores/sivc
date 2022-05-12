@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author melan
@@ -19,10 +20,46 @@ public class inventario extends javax.swing.JFrame {
      * Creates new form inventario
      */
     public inventario() {
+        mostrarDatos();
         initComponents();
          this.setLocationRelativeTo(null);
     }
-
+    conexion con = new conexion();
+        Connection c =con.conectar();
+  public void mostrarDatos(){
+      
+      //aqui no me permite ordenarlos es mas no me permite ni mostrarlos ;
+    /* DefaultTableModel date= new DefaultTableModel();
+         date.addColumn("ID producto");
+         date.addColumn("nombre");
+         date.addColumn("categoria");
+         date.addColumn("precio");
+         date.addColumn("cantidad");
+         inventario.setModel(date);
+         
+          String[] Datos = new String[5];
+          
+          try{
+          Statement read =c.createStatement();
+          ResultSet rs=read.executeQuery("select id_producto,nombre,id_categoria,costo,descripcion FROM pedidos ");
+          
+          while(rs.next()){
+          Datos [0] = rs.getString(1);
+          Datos [1] = rs.getString(2);
+          Datos [2] = rs.getString(3);
+          Datos [3] = rs.getString(4);
+          Datos [4] = rs.getString(5);
+          date.addRow(Datos);
+          }
+          inventario.setModel(date);
+         }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error "+e.getMessage());
+        }
+  
+  
+  */
+  }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,7 +74,7 @@ public class inventario extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        inventario = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -67,18 +104,15 @@ public class inventario extends javax.swing.JFrame {
 
         jLabel1.setText("Filtrar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        inventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(inventario);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("Inventario");
@@ -142,7 +176,7 @@ public class inventario extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -210,6 +244,7 @@ public class inventario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable inventario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -217,7 +252,6 @@ public class inventario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
