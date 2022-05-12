@@ -1,15 +1,13 @@
 package com.mycompany.sivc;
 
+import java.awt.Image;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -20,7 +18,9 @@ import javax.swing.table.DefaultTableModel;
  * @author BAML
  */
 public class Venta extends javax.swing.JFrame {
-     
+
+    private int longitudBytes;
+
     /**
      * Creates new form Venta
      */
@@ -273,23 +273,8 @@ public class Venta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        JFileChooser se = new JFileChooser();
-        se.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        int estado=se.showOpenDialog(null);
-        if(estado==JFileChooser.APPROVE_OPTION){
-            try{
-                fis=new FileInputStream(se.getSelectedFile());
-                this.longitudBytes=(int)se.getSelectedFile().length();
-                Image icono=ImageIO.read(se.getSelectedFile()).getScaledInstance(jLabel7.getWidth(),jLabel7.getHeight(),Image.SCALE_DEFAULT);
-                jLabel7.setIcon(new ImageIcon(icono));
-                jLabel7.updateUI();
-            }catch(FileNotFoundException e){
-                e.printStackTrace();
-            }
-            catch(IOException e){
-                e.printStackTrace();
-            }
-        }
+   
+       
     }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
