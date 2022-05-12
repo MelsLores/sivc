@@ -45,7 +45,7 @@ public class inventario extends javax.swing.JFrame {
         
             try{
                 Statement st=c.createStatement();
-                ResultSet rs=st.executeQuery("SELECT productos.id_producto,productos.nombre,categoria.nombre,productos.precio,productos.cantidad FROM productos INNER JOIN categoria,proveedores_productos ON productos.id_categoria=categoria.id_categoria AND ");
+                ResultSet rs=st.executeQuery("SELECT productos.id_producto,productos.nombre,proveedores.nombre,categoria.nombre,productos.precio,productos.cantidad FROM productos INNER JOIN categoria ON productos.id_categoria=categoria.id_categoria INNER JOIN proveedores_productos ON productos.id_producto=proveedores_productos.id_producto INNER JOIN proveedores ON proveedores_productos.id_proveedor=proveedores.id_proveedor");
                 
                 while(rs.next()){
                     datos[0]=rs.getString(1);
