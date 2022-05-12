@@ -61,7 +61,7 @@ public class inventario extends javax.swing.JFrame {
                 Logger.getLogger(proveedores.class.getName()).log(Level.SEVERE,null,ex);
             }
     }
-
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
