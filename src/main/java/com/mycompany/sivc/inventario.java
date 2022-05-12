@@ -36,6 +36,7 @@ public class inventario extends javax.swing.JFrame {
         modelo.addColumn("Categoría");
         modelo.addColumn("Precio por KG");
         modelo.addColumn("Cantidad");
+        modelo.addColumn("Foto");
         jTable1.setModel(modelo);
         
         conexion con = new conexion();
@@ -45,7 +46,7 @@ public class inventario extends javax.swing.JFrame {
         
             try{
                 Statement st=c.createStatement();
-                ResultSet rs=st.executeQuery("SELECT productos.id_producto,productos.nombre,proveedores.nombre,categoria.nombre,productos.precio,productos.cantidad FROM productos INNER JOIN categoria ON productos.id_categoria=categoria.id_categoria INNER JOIN proveedores_productos ON productos.id_producto=proveedores_productos.id_producto INNER JOIN proveedores ON proveedores_productos.id_proveedor=proveedores.id_proveedor");
+                ResultSet rs=st.executeQuery("SELECT productos.id_producto,productos.nombre,proveedores.nombre,categoria.nombre,productos.precio,productos.cantidad,fotos.foto FROM productos INNER JOIN categoria ON productos.id_categoria=categoria.id_categoria INNER JOIN proveedores_productos ON productos.id_producto=proveedores_productos.id_producto INNER JOIN proveedores ON proveedores_productos.id_proveedor=proveedores.id_proveedor INNER JOIN fotos ON fotos.id_producto=productos.id_producto");
                 
                 while(rs.next()){
                     datos[0]=rs.getString(1);
@@ -188,9 +189,7 @@ public class inventario extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        eliminarUsuario abrir = new eliminarUsuario();
-        abrir.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
