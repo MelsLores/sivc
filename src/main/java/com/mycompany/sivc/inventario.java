@@ -4,6 +4,12 @@ package com.mycompany.sivc;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,6 +17,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -24,11 +33,15 @@ public class inventario extends javax.swing.JFrame {
      */
     public inventario() {
         initComponents();
-        mostrarDatos();
+        try {
+            mostrarDatos();
+        } catch (Exception ex) {
+            Logger.getLogger(inventario.class.getName()).log(Level.SEVERE, null, ex);
+        }
          this.setLocationRelativeTo(null);
     }
     
-    void mostrarDatos(){
+    void mostrarDatos() throws Exception{
         DefaultTableModel modelo=new DefaultTableModel();
         modelo.addColumn("Código del producto");
         modelo.addColumn("Nombre");
@@ -38,31 +51,47 @@ public class inventario extends javax.swing.JFrame {
         modelo.addColumn("Cantidad");
         modelo.addColumn("Foto");
         jTable1.setModel(modelo);
-        
+        jTable1.setRowHeight(120);
         conexion con = new conexion();
         Connection c =con.conectar();
         
-        String datos[] = new String [6];
+        Object datos[] = new Object [7];
         
             try{
                 Statement st=c.createStatement();
                 ResultSet rs=st.executeQuery("SELECT productos.id_producto,productos.nombre,proveedores.nombre,categoria.nombre,productos.precio,productos.cantidad,fotos.foto FROM productos INNER JOIN categoria ON productos.id_categoria=categoria.id_categoria INNER JOIN proveedores_productos ON productos.id_producto=proveedores_productos.id_producto INNER JOIN proveedores ON proveedores_productos.id_proveedor=proveedores.id_proveedor INNER JOIN fotos ON fotos.id_producto=productos.id_producto");
                 
                 while(rs.next()){
-                    datos[0]=rs.getString(1);
-                    datos[1]=rs.getString(2);
-                    datos[2]=rs.getString(3);
-                    datos[3]=rs.getString(4);
-                    datos[4]=rs.getString(5);
-                    datos[5]=rs.getString(6);
-                    modelo.addRow(datos);
+                    try{
+                        datos[0]=rs.getString(1);
+                        datos[1]=rs.getString(2);
+                        datos[2]=rs.getString(3);
+                        datos[3]=rs.getString(4);
+                        datos[4]=rs.getString(5);
+                        datos[5]=rs.getString(6);
+                        Blob blb = rs.getBlob(7);
+                        InputStream imgBytes = blb.getBinaryStream(1, (int) blb.length());
+                        BufferedImage image = ImageIO.read(imgBytes);
+                        Image image2=image;
+                        Image image3 = image2.getScaledInstance(120,120,java.awt.Image.SCALE_SMOOTH);
+                        ImageIcon finalimg=new ImageIcon(image3);
+                        //datos[6]= new ImageIcon(image);
+                        datos[6]=finalimg;
+                        modelo.addRow(datos);
+                        System.out.println("kpex"+blb);
+                        System.out.println("kpex"+image);
+                        
+                    }catch(IOException | SQLException e){
+                        e.printStackTrace();
+                    }
+                    
                 }
                 jTable1.setModel(modelo);
             }catch(SQLException ex){
                 Logger.getLogger(proveedores.class.getName()).log(Level.SEVERE,null,ex);
             }
     }
- 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,7 +102,12 @@ public class inventario extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable(){
+            public Class getColumnClass(int column){
+                System.out.println(column);
+                return (column==6) ? Icon.class:Object.class;
+            }
+        };
         jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -163,7 +197,7 @@ public class inventario extends javax.swing.JFrame {
                     .addComponent(jButton2))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
