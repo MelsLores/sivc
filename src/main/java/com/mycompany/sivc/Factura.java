@@ -82,6 +82,7 @@ public class Factura extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Factura");
 
+        factemp1.setEditable(false);
         factemp1.setText("super carnes ricky");
         factemp1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

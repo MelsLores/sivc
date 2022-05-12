@@ -7,8 +7,12 @@ package com.mycompany.sivc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author BAML
@@ -20,8 +24,41 @@ public class agregar_producto extends javax.swing.JFrame {
      */
     public agregar_producto() {
         initComponents();
+        mostrarDatos();
     }
-
+void mostrarDatos(){
+        DefaultTableModel modelo=new DefaultTableModel();
+        modelo.addColumn("Código del producto");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Proveedor");
+        modelo.addColumn("Categoría");
+        modelo.addColumn("Precio por KG");
+        modelo.addColumn("Cantidad");
+        jTable1.setModel(modelo);
+        
+        conexion con = new conexion();
+        Connection c =con.conectar();
+        
+        String datos[] = new String [6];
+        
+            try{
+                Statement st=c.createStatement();
+                ResultSet rs=st.executeQuery("SELECT productos.id_producto,productos.nombre,proveedores.nombre,categoria.nombre,productos.precio,productos.cantidad FROM productos INNER JOIN categoria ON productos.id_categoria=categoria.id_categoria INNER JOIN proveedores_productos ON productos.id_producto=proveedores_productos.id_producto INNER JOIN proveedores ON proveedores_productos.id_proveedor=proveedores.id_proveedor");
+                
+                while(rs.next()){
+                    datos[0]=rs.getString(1);
+                    datos[1]=rs.getString(2);
+                    datos[2]=rs.getString(3);
+                    datos[3]=rs.getString(4);
+                    datos[4]=rs.getString(5);
+                    datos[5]=rs.getString(6);
+                    modelo.addRow(datos);
+                }
+                jTable1.setModel(modelo);
+            }catch(SQLException ex){
+                Logger.getLogger(proveedores.class.getName()).log(Level.SEVERE,null,ex);
+            }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

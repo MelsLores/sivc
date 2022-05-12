@@ -47,7 +47,7 @@ public class buscar_producto extends javax.swing.JFrame {
         nom_prod = new javax.swing.JTextPane();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
+        categoria = new javax.swing.JTextPane();
         srchboton = new javax.swing.JButton();
         minus2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -95,7 +95,7 @@ public class buscar_producto extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("categoria");
 
-        jScrollPane3.setViewportView(jTextPane3);
+        jScrollPane3.setViewportView(categoria);
 
         srchboton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         srchboton.setText("buscar");
@@ -112,6 +112,11 @@ public class buscar_producto extends javax.swing.JFrame {
         cant2.setText("num");
 
         minus1.setText("-");
+        minus1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minus1ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("+");
 
@@ -184,8 +189,10 @@ public class buscar_producto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jButton9))
+                    .addComponent(jButton9)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(31, 31, 31)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(233, 233, 233)
@@ -196,9 +203,8 @@ public class buscar_producto extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGroup(layout.createSequentialGroup()
                                                 .addGap(7, 7, 7)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -208,14 +214,6 @@ public class buscar_producto extends javax.swing.JFrame {
                                                         .addComponent(cant3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addComponent(jButton7))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jLabel9)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(precio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(127, 127, 127)
-                                                        .addComponent(jLabel11)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(precio3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addComponent(minus1)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -239,13 +237,21 @@ public class buscar_producto extends javax.swing.JFrame {
                                                         .addGap(240, 240, 240))))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jLabel7)
-                                                        .addGap(14, 14, 14)
+                                                .addComponent(jLabel7)
+                                                .addGap(24, 24, 24)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                        .addComponent(jLabel9)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(precio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(127, 127, 127)
+                                                        .addComponent(jLabel11)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(precio3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                         .addComponent(precio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(510, 510, 510))
-                                                    .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                         .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(140, 140, 140)
                                                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -351,36 +357,36 @@ public class buscar_producto extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-  
+     conexion con = new conexion();
+       Connection c =con.conectar();
     public void Buscarproductos(){
-       //conexion con = new conexion();
-       //Connection c =con.conectar();
+       
         
-       // int res=0;
-       // String id_Prod=id_porducto.getInt();
-       // String nombre_prod = String.valueOf(nombre.getText());
-       //String categoria = String.valueOf(id_categoria.getInt());
-       //String precio_prod = String.valueOf(id_categoria.getInt());
-       //String cantidad_prod = String.valueOf(cantidad.getInt());
-       // String SQL = "select * from usuarios where usuario='"+user+"' and contraseña='"+pass+"'";
+        int res=0;
+        String id_Prod=idproducto.getText();
+        String nombre_prod = String.valueOf(nom_prod.getText());
+       String IDcategoria = String.valueOf(categoria.getText());
+       String precio_prod = String.valueOf(precio1.getText());
+       String cantidad_prod = String.valueOf(cant1.getText());
+        String SQL = "select * from productos where id_productos='"+id_Prod+"'and id_categoria='"+IDcategoria+"'";
         
-     //   try{
-      //      Statement st=c.createStatement();
-      //      ResultSet rs=st.executeQuery(SQL);
+        try{
+            Statement st=c.createStatement();
+            ResultSet rs=st.executeQuery(SQL);
             
-      //      if(rs.next()){
-      //          res=1;
-      //          MenuGeneral abrir = new MenuGeneral();
-      //          abrir.setVisible(true);
-      //          this.setVisible(false);
-      //      }
-      //      else{
+           if(rs.next()){
+                res=1;
                 
-      //          JOptionPane.showMessageDialog(null, "Error de acceso, usuario no registrado o contraseña incorrecta.");//mensaje temporal o permanente.
-      //      }
-    //    }catch(Exception e){
-    //        JOptionPane.showMessageDialog(null, "Error "+e.getMessage());
-    //    }
+                cant1.setText(SQL);
+                //mostrar los productos 
+            }
+            else{
+                
+                JOptionPane.showMessageDialog(null, "producto no encontrado.");//mensaje temporal o permanente.
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error "+e.getMessage());
+        }
     
     
     }
@@ -403,6 +409,10 @@ public class buscar_producto extends javax.swing.JFrame {
     private void srchbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_srchbotonActionPerformed
       Buscarproductos();  // TODO add your handling code here:
     }//GEN-LAST:event_srchbotonActionPerformed
+
+    private void minus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minus1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_minus1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -444,6 +454,7 @@ public class buscar_producto extends javax.swing.JFrame {
     private javax.swing.JTextField cant1;
     private javax.swing.JTextField cant2;
     private javax.swing.JTextField cant3;
+    private javax.swing.JTextPane categoria;
     private javax.swing.JTextPane idproducto;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
@@ -468,7 +479,6 @@ public class buscar_producto extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextPane jTextPane3;
     private javax.swing.JButton minus1;
     private javax.swing.JButton minus2;
     private javax.swing.JButton minus3;
