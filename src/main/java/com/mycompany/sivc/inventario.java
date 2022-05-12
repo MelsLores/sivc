@@ -34,14 +34,14 @@ public class inventario extends javax.swing.JFrame {
         modelo.addColumn("Nombre");
         modelo.addColumn("Proveedor");
         modelo.addColumn("Categoría");
-        modelo.addColumn("Precio Unitario");
+        modelo.addColumn("Precio por KG");
         modelo.addColumn("Cantidad");
         jTable1.setModel(modelo);
         
         conexion con = new conexion();
         Connection c =con.conectar();
         
-        String datos[] = new String [3];
+        String datos[] = new String [6];
         
             try{
                 Statement st=c.createStatement();
@@ -51,6 +51,9 @@ public class inventario extends javax.swing.JFrame {
                     datos[0]=rs.getString(1);
                     datos[1]=rs.getString(2);
                     datos[2]=rs.getString(3);
+                    datos[3]=rs.getString(4);
+                    datos[4]=rs.getString(5);
+                    datos[5]=rs.getString(6);
                     modelo.addRow(datos);
                 }
                 jTable1.setModel(modelo);
