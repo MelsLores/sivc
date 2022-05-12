@@ -345,7 +345,7 @@ public class Venta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
  public void factura(){
     
-    Factura.subtotalfact.setText(jLabel2.getText());
+    
     ticket_compra.fechat.setText(fecha.getText());
     
   

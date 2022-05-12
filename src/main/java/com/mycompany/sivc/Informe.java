@@ -29,7 +29,7 @@ public class Informe extends javax.swing.JFrame {
     conexion con = new conexion();
         Connection c =con.conectar();
  public void ultimas_ventas(){
-   //DefaultTableModel ultimas= new DefaultTableModel() ;
+  
     DefaultTableModel date= new DefaultTableModel();
          date.addColumn("pedidos");
          date.addColumn("fecha");

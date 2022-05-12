@@ -229,16 +229,19 @@
     </Component>
     <Component class="javax.swing.JTextField" name="total">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="cantidad"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField2">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="cantidad"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField3">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="cantidad"/>
       </Properties>
     </Component>
@@ -252,6 +255,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fechat">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="DD/MM/AAAA"/>
       </Properties>
       <AuxValues>

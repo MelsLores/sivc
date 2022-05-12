@@ -1,5 +1,7 @@
 package com.mycompany.sivc;
 
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -18,7 +20,12 @@ public class ticket_compra extends javax.swing.JFrame {
         initComponents();
          this.setLocationRelativeTo(null);
     }
+void  tablaticket(){
+DefaultTableModel modelo=new DefaultTableModel();
 
+
+
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,15 +102,19 @@ public class ticket_compra extends javax.swing.JFrame {
             }
         });
 
+        total.setEditable(false);
         total.setText("cantidad");
 
+        jTextField2.setEditable(false);
         jTextField2.setText("cantidad");
 
+        jTextField3.setEditable(false);
         jTextField3.setText("cantidad");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("gracias por tu compra");
 
+        fechat.setEditable(false);
         fechat.setText("DD/MM/AAAA");
 
         jTextField5.setText("HH/MM/SS");
@@ -214,6 +225,8 @@ public class ticket_compra extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Factura.subtotalfact.setText(total.getText());
+        
         Factura abrir = new Factura();
         abrir.setVisible(true);
         this.setVisible(false);
