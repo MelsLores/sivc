@@ -41,7 +41,7 @@ public class Informe extends javax.swing.JFrame {
          
          try{
           Statement read =c.createStatement();
-          ResultSet rs=read.executeQuery("select id_pedido,fecha,costo,descripcion FROM pedidos ORDER BY fecha DESC");
+          ResultSet rs=read.executeQuery("SELECT id_pedido,fecha,costo,descripcion FROM pedidos ORDER BY fecha DESC");
           
           while(rs.next()){
           data2 [0] = rs.getString(1);
@@ -50,7 +50,7 @@ public class Informe extends javax.swing.JFrame {
           data2 [3] = rs.getString(4);
           date.addRow(data2);
           }
-          maxdate.setModel(date);
+          
          }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error "+e.getMessage());
         }
@@ -70,7 +70,7 @@ public class Informe extends javax.swing.JFrame {
          
          try{
           Statement read =c.createStatement();
-          ResultSet rs=read.executeQuery("select id_pedido,fecha,costo,descripcion FROM pedidos ORDER BY costo DESC");
+          ResultSet rs=read.executeQuery("SELECT id_pedido,fecha,costo,descripcion FROM pedidos ORDER BY costo DESC");
           
           while(rs.next()){
           data1 [0] = rs.getString(1);
@@ -79,7 +79,7 @@ public class Informe extends javax.swing.JFrame {
           data1 [3] = rs.getString(4);
           sells.addRow(data1);
           }
-          maxSells.setModel(sells);
+          
          }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error "+e.getMessage());
         }
