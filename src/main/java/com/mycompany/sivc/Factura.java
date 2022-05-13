@@ -7,7 +7,13 @@ package com.mycompany.sivc;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -15,35 +21,79 @@ import javax.swing.table.DefaultTableModel;
  * @author BAML
  */
 public class Factura extends javax.swing.JFrame {
+String cat;
+float sumatoria=0;  
+Timestamp dt;
+String idP;
 
     /**
      * Creates new form Factura
-     */
+     */DefaultTableModel modelo=new DefaultTableModel();
     public Factura() {
         initComponents();
          this.setLocationRelativeTo(null);
+         
+         modelo.addColumn("Código del producto");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Categoría");
+        modelo.addColumn("Precio por KG");
+        modelo.addColumn("Cantidad");
+        jTable3.setModel(modelo);
     }
- public void factura_imp(){
-     conexion con = new conexion();
-        Connection c =con.conectar();
-        
-       
-        
-        
-      
  
    
- }
- public void vendedor(){
-     
+   public void Factura_datos(){
+      
         
-     }  
- public void recibos(){
-     
-     
-     
-     
-     }  
+            conexion con = new conexion();
+        Connection c =con.conectar();
+        
+         
+        
+         String d=dt.toString();
+         try{
+                Statement st=c.createStatement();
+                ResultSet rs=st.executeQuery("SELECT id_pedido FROM pedidos WHERE fecha='"+dt+"'");
+                while(rs.next()){
+                   idP=rs.getString(1);
+                    
+                }
+            }catch(SQLException ex){
+                Logger.getLogger(proveedores.class.getName()).log(Level.SEVERE,null,ex);
+            }
+         
+         
+                  try{
+        
+          
+          for(int i=0;i<modelo.getRowCount();i++){
+              PreparedStatement  guardar=c.prepareStatement("INSERT INTO productos_pedidos(id_producto,id_pedido) VALUES(?,?)");
+              System.out.println(guardar);
+              guardar.setString(1,modelo.getValueAt(i,0).toString());
+            guardar.setString(2,idP);
+            
+            int vA=Integer.parseInt(modelo.getValueAt(i,4).toString());
+            int vB=Integer.parseInt(modelo.getValueAt(i,0).toString());
+                PreparedStatement  guardar2=c.prepareStatement("UPDATE productos SET cantidad=cantidad-"+vA+" WHERE id_producto="+vB);
+                System.out.println(guardar2);
+            guardar.executeUpdate();
+            guardar2.executeUpdate();
+          }
+
+         
+        
+           
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "no se logro guardar Error "+e.getMessage());
+        }
+        
+        
+        
+        
+        
+    
+    }
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -148,6 +198,8 @@ public class Factura extends javax.swing.JFrame {
             }
         });
 
+        idclient.setEditable(false);
+        idclient.setText("00000");
         idclient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idclientActionPerformed(evt);
@@ -214,10 +266,10 @@ public class Factura extends javax.swing.JFrame {
                     .addComponent(telcli, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(facdir2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(empcli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomcli, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(factcity2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(nomcli, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(factcity2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(rfc2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,11 +373,11 @@ public class Factura extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel8)
-                                .addComponent(totalfact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(totalfact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel7)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(impfact)))
@@ -356,7 +408,10 @@ public class Factura extends javax.swing.JFrame {
     }//GEN-LAST:event_factcity2ActionPerformed
 
     private void impfactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_impfactActionPerformed
-      factura_imp();
+     JOptionPane.showMessageDialog(null, "factura creada");
+        MenuGeneral abrir = new MenuGeneral();
+                abrir.setVisible(true);
+                this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_impfactActionPerformed
 
@@ -418,7 +473,7 @@ public class Factura extends javax.swing.JFrame {
     private javax.swing.JTextField factcity1;
     public static javax.swing.JTextField factcity2;
     private javax.swing.JTextField factemp1;
-    private javax.swing.JTextField idclient;
+    public static javax.swing.JTextField idclient;
     private javax.swing.JButton impfact;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
